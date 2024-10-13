@@ -1,0 +1,519 @@
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.25
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[+] URL: https://aaaaaaa.com/ [45.252.248.11]
+[+] Started: Wed Aug  7 05:20:43 2024
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entries:
+ |  - x-powered-by: PHP/7.2.34
+ |  - x-litespeed-cache: hit
+ |  - server: LiteSpeed
+ |  - alt-svc: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] robots.txt found: https://aaaaaaa.com/robots.txt
+ | Interesting Entries:
+ |  - /wp-admin/
+ |  - /wp-admin/admin-ajax.php
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: https://aaaaaaa.com/xmlrpc.php
+ | Found By: Link Tag (Passive Detection)
+ | Confidence: 30%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress version 5.4.2 identified (Insecure, released on 2020-06-10).
+ | Found By: Meta Generator (Passive Detection)
+ |  - https://aaaaaaa.com/, Match: 'WordPress 5.4.2'
+ | Confirmed By: Query Parameter In Upgrade Page (Aggressive Detection)
+ |  - https://aaaaaaa.com/wp-includes/css/dashicons.min.css?ver=5.4.2
+ |  - https://aaaaaaa.com/wp-includes/css/buttons.min.css?ver=5.4.2
+ |  - https://aaaaaaa.com/wp-admin/css/forms.min.css?ver=5.4.2
+ |  - https://aaaaaaa.com/wp-admin/css/l10n.min.css?ver=5.4.2
+ |  - https://aaaaaaa.com/wp-admin/css/install.min.css?ver=5.4.2
+ |
+ | [!] 42 vulnerabilities identified:
+ |
+ | [!] Title: WordPress 4.7-5.7 - Authenticated Password Protected Pages Exposure
+ |     Fixed in: 5.4.5
+ |     References:
+ |      - https://wpscan.com/vulnerability/6a3ec618-c79e-4b9c-9020-86b157458ac5
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-29450
+ |      - https://wordpress.org/news/2021/04/wordpress-5-7-1-security-and-maintenance-release/
+ |      - https://blog.wpscan.com/2021/04/15/wordpress-571-security-vulnerability-release.html
+ |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-pmmh-2f36-wvhq
+ |      - https://core.trac.wordpress.org/changeset/50717/
+ |      - https://www.youtube.com/watch?v=J2GXmxAdNWs
+ |
+ | [!] Title: WordPress 3.7 to 5.7.1 - Object Injection in PHPMailer
+ |     Fixed in: 5.4.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/4cd46653-4470-40ff-8aac-318bee2f998d
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-36326
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-19296
+ |      - https://github.com/WordPress/WordPress/commit/267061c9595fedd321582d14c21ec9e7da2dcf62
+ |      - https://wordpress.org/news/2021/05/wordpress-5-7-2-security-release/
+ |      - https://github.com/PHPMailer/PHPMailer/commit/e2e07a355ee8ff36aba21d0242c5950c56e4c6f9
+ |      - https://www.wordfence.com/blog/2021/05/wordpress-5-7-2-security-release-what-you-need-to-know/
+ |      - https://www.youtube.com/watch?v=HaW15aMzBUM
+ |
+ | [!] Title: WordPress 5.4 to 5.8 - Data Exposure via REST API
+ |     Fixed in: 5.4.7
+ |     References:
+ |      - https://wpscan.com/vulnerability/38dd7e87-9a22-48e2-bab1-dc79448ecdfb
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-39200
+ |      - https://wordpress.org/news/2021/09/wordpress-5-8-1-security-and-maintenance-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/ca4765c62c65acb732b574a6761bf5fd84595706
+ |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-m9hc-7v5q-x8q5
+ |
+ | [!] Title: WordPress 5.4 to 5.8 - Authenticated XSS in Block Editor
+ |     Fixed in: 5.4.7
+ |     References:
+ |      - https://wpscan.com/vulnerability/5b754676-20f5-4478-8fd3-6bc383145811
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-39201
+ |      - https://wordpress.org/news/2021/09/wordpress-5-8-1-security-and-maintenance-release/
+ |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-wh69-25hr-h94v
+ |
+ | [!] Title: WordPress 5.4 to 5.8 -  Lodash Library Update
+ |     Fixed in: 5.4.7
+ |     References:
+ |      - https://wpscan.com/vulnerability/5d6789db-e320-494b-81bb-e678674f4199
+ |      - https://wordpress.org/news/2021/09/wordpress-5-8-1-security-and-maintenance-release/
+ |      - https://github.com/lodash/lodash/wiki/Changelog
+ |      - https://github.com/WordPress/wordpress-develop/commit/fb7ecd92acef6c813c1fde6d9d24a21e02340689
+ |
+ | [!] Title: WordPress < 5.8.2 - Expired DST Root CA X3 Certificate
+ |     Fixed in: 5.4.8
+ |     References:
+ |      - https://wpscan.com/vulnerability/cc23344a-5c91-414a-91e3-c46db614da8d
+ |      - https://wordpress.org/news/2021/11/wordpress-5-8-2-security-and-maintenance-release/
+ |      - https://core.trac.wordpress.org/ticket/54207
+ |
+ | [!] Title: WordPress < 5.8 - Plugin Confusion
+ |     Fixed in: 5.8
+ |     References:
+ |      - https://wpscan.com/vulnerability/95e01006-84e4-4e95-b5d7-68ea7b5aa1a8
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44223
+ |      - https://vavkamil.cz/2021/11/25/wordpress-plugin-confusion-update-can-get-you-pwned/
+ |
+ | [!] Title: WordPress < 5.8.3 - SQL Injection via WP_Query
+ |     Fixed in: 5.4.9
+ |     References:
+ |      - https://wpscan.com/vulnerability/7f768bcf-ed33-4b22-b432-d1e7f95c1317
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-21661
+ |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-6676-cqfm-gw84
+ |      - https://hackerone.com/reports/1378209
+ |
+ | [!] Title: WordPress < 5.8.3 - Author+ Stored XSS via Post Slugs
+ |     Fixed in: 5.4.9
+ |     References:
+ |      - https://wpscan.com/vulnerability/dc6f04c2-7bf2-4a07-92b5-dd197e4d94c8
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-21662
+ |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-699q-3hj9-889w
+ |      - https://hackerone.com/reports/425342
+ |      - https://blog.sonarsource.com/wordpress-stored-xss-vulnerability
+ |
+ | [!] Title: WordPress 4.1-5.8.2 - SQL Injection via WP_Meta_Query
+ |     Fixed in: 5.4.9
+ |     References:
+ |      - https://wpscan.com/vulnerability/24462ac4-7959-4575-97aa-a6dcceeae722
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-21664
+ |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-jp3p-gw8h-6x86
+ |
+ | [!] Title: WordPress < 5.8.3 - Super Admin Object Injection in Multisites
+ |     Fixed in: 5.4.9
+ |     References:
+ |      - https://wpscan.com/vulnerability/008c21ab-3d7e-4d97-b6c3-db9d83f390a7
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-21663
+ |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-jmmq-m8p8-332h
+ |      - https://hackerone.com/reports/541469
+ |
+ | [!] Title: WordPress < 5.9.2 - Prototype Pollution in jQuery
+ |     Fixed in: 5.4.10
+ |     References:
+ |      - https://wpscan.com/vulnerability/1ac912c1-5e29-41ac-8f76-a062de254c09
+ |      - https://wordpress.org/news/2022/03/wordpress-5-9-2-security-maintenance-release/
+ |
+ | [!] Title: WP < 6.0.2 - Reflected Cross-Site Scripting
+ |     Fixed in: 5.4.11
+ |     References:
+ |      - https://wpscan.com/vulnerability/622893b0-c2c4-4ee7-9fa1-4cecef6e36be
+ |      - https://wordpress.org/news/2022/08/wordpress-6-0-2-security-and-maintenance-release/
+ |
+ | [!] Title: WP < 6.0.2 - Authenticated Stored Cross-Site Scripting
+ |     Fixed in: 5.4.11
+ |     References:
+ |      - https://wpscan.com/vulnerability/3b1573d4-06b4-442b-bad5-872753118ee0
+ |      - https://wordpress.org/news/2022/08/wordpress-6-0-2-security-and-maintenance-release/
+ |
+ | [!] Title: WP < 6.0.2 - SQLi via Link API
+ |     Fixed in: 5.4.11
+ |     References:
+ |      - https://wpscan.com/vulnerability/601b0bf9-fed2-4675-aec7-fed3156a022f
+ |      - https://wordpress.org/news/2022/08/wordpress-6-0-2-security-and-maintenance-release/
+ |
+ | [!] Title: WP < 6.0.3 - Stored XSS via wp-mail.php
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/713bdc8b-ab7c-46d7-9847-305344a579c4
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/abf236fdaf94455e7bc6e30980cf70401003e283
+ |
+ | [!] Title: WP < 6.0.3 - Open Redirect via wp_nonce_ays
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/926cd097-b36f-4d26-9c51-0dfab11c301b
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/506eee125953deb658307bb3005417cb83f32095
+ |
+ | [!] Title: WP < 6.0.3 - Email Address Disclosure via wp-mail.php
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/c5675b59-4b1d-4f64-9876-068e05145431
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/5fcdee1b4d72f1150b7b762ef5fb39ab288c8d44
+ |
+ | [!] Title: WP < 6.0.3 - Reflected XSS via SQLi in Media Library
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/cfd8b50d-16aa-4319-9c2d-b227365c2156
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/8836d4682264e8030067e07f2f953a0f66cb76cc
+ |
+ | [!] Title: WP < 6.0.3 - CSRF in wp-trackback.php
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/b60a6557-ae78-465c-95bc-a78cf74a6dd0
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/a4f9ca17fae0b7d97ff807a3c234cf219810fae0
+ |
+ | [!] Title: WP < 6.0.3 - Stored XSS via the Customizer
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/2787684c-aaef-4171-95b4-ee5048c74218
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/2ca28e49fc489a9bb3c9c9c0d8907a033fe056ef
+ |
+ | [!] Title: WP < 6.0.3 - Stored XSS via Comment Editing
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/02d76d8e-9558-41a5-bdb6-3957dc31563b
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/89c8f7919460c31c0f259453b4ffb63fde9fa955
+ |
+ | [!] Title: WP < 6.0.3 - Content from Multipart Emails Leaked
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/3f707e05-25f0-4566-88ed-d8d0aff3a872
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/3765886b4903b319764490d4ad5905bc5c310ef8
+ |
+ | [!] Title: WP < 6.0.3 - SQLi in WP_Date_Query
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/1da03338-557f-4cb6-9a65-3379df4cce47
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/d815d2e8b2a7c2be6694b49276ba3eee5166c21f
+ |
+ | [!] Title: WP < 6.0.3 - Stored XSS via RSS Widget
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/58d131f5-f376-4679-b604-2b888de71c5b
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/929cf3cb9580636f1ae3fe944b8faf8cca420492
+ |
+ | [!] Title: WP < 6.0.3 - Data Exposure via REST Terms/Tags Endpoint
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/b27a8711-a0c0-4996-bd6a-01734702913e
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/wordpress-develop/commit/ebaac57a9ac0174485c65de3d32ea56de2330d8e
+ |
+ | [!] Title: WP < 6.0.3 - Multiple Stored XSS via Gutenberg
+ |     Fixed in: 5.4.12
+ |     References:
+ |      - https://wpscan.com/vulnerability/f513c8f6-2e1c-45ae-8a58-36b6518e2aa9
+ |      - https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/
+ |      - https://github.com/WordPress/gutenberg/pull/45045/files
+ |
+ | [!] Title: WP <= 6.2 - Unauthenticated Blind SSRF via DNS Rebinding
+ |     References:
+ |      - https://wpscan.com/vulnerability/c8814e6e-78b3-4f63-a1d3-6906a84c1f11
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-3590
+ |      - https://blog.sonarsource.com/wordpress-core-unauthenticated-blind-ssrf/
+ |
+ | [!] Title: WP < 6.2.1 - Directory Traversal via Translation Files
+ |     Fixed in: 5.4.13
+ |     References:
+ |      - https://wpscan.com/vulnerability/2999613a-b8c8-4ec0-9164-5dfe63adf6e6
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-2745
+ |      - https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/
+ |
+ | [!] Title: WP < 6.2.1 - Thumbnail Image Update via CSRF
+ |     Fixed in: 5.4.13
+ |     References:
+ |      - https://wpscan.com/vulnerability/a03d744a-9839-4167-a356-3e7da0f1d532
+ |      - https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/
+ |
+ | [!] Title: WP < 6.2.1 - Contributor+ Stored XSS via Open Embed Auto Discovery
+ |     Fixed in: 5.4.13
+ |     References:
+ |      - https://wpscan.com/vulnerability/3b574451-2852-4789-bc19-d5cc39948db5
+ |      - https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/
+ |
+ | [!] Title: WP < 6.2.2 - Shortcode Execution in User Generated Data
+ |     Fixed in: 5.4.13
+ |     References:
+ |      - https://wpscan.com/vulnerability/ef289d46-ea83-4fa5-b003-0352c690fd89
+ |      - https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/
+ |      - https://wordpress.org/news/2023/05/wordpress-6-2-2-security-release/
+ |
+ | [!] Title: WP < 6.2.1 - Contributor+ Content Injection
+ |     Fixed in: 5.4.13
+ |     References:
+ |      - https://wpscan.com/vulnerability/1527ebdb-18bc-4f9d-9c20-8d729a628670
+ |      - https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/
+ |
+ | [!] Title: WP < 6.3.2 - Denial of Service via Cache Poisoning
+ |     Fixed in: 5.4.14
+ |     References:
+ |      - https://wpscan.com/vulnerability/6d80e09d-34d5-4fda-81cb-e703d0e56e4f
+ |      - https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/
+ |
+ | [!] Title: WP < 6.3.2 - Subscriber+ Arbitrary Shortcode Execution
+ |     Fixed in: 5.4.14
+ |     References:
+ |      - https://wpscan.com/vulnerability/3615aea0-90aa-4f9a-9792-078a90af7f59
+ |      - https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/
+ |
+ | [!] Title: WP < 6.3.2 - Contributor+ Comment Disclosure
+ |     Fixed in: 5.4.14
+ |     References:
+ |      - https://wpscan.com/vulnerability/d35b2a3d-9b41-4b4f-8e87-1b8ccb370b9f
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-39999
+ |      - https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/
+ |
+ | [!] Title: WP < 6.3.2 - Unauthenticated Post Author Email Disclosure
+ |     Fixed in: 5.4.14
+ |     References:
+ |      - https://wpscan.com/vulnerability/19380917-4c27-4095-abf1-eba6f913b441
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5561
+ |      - https://wpscan.com/blog/email-leak-oracle-vulnerability-addressed-in-wordpress-6-3-2/
+ |      - https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/
+ |
+ | [!] Title: WordPress < 6.4.3 - Deserialization of Untrusted Data
+ |     Fixed in: 5.4.15
+ |     References:
+ |      - https://wpscan.com/vulnerability/5e9804e5-bbd4-4836-a5f0-b4388cc39225
+ |      - https://wordpress.org/news/2024/01/wordpress-6-4-3-maintenance-and-security-release/
+ |
+ | [!] Title: WordPress < 6.4.3 - Admin+ PHP File Upload
+ |     Fixed in: 5.4.15
+ |     References:
+ |      - https://wpscan.com/vulnerability/a8e12fbe-c70b-4078-9015-cf57a05bdd4a
+ |      - https://wordpress.org/news/2024/01/wordpress-6-4-3-maintenance-and-security-release/
+ |
+ | [!] Title: WordPress < 6.5.5 - Contributor+ Stored XSS in HTML API
+ |     Fixed in: 5.4.16
+ |     References:
+ |      - https://wpscan.com/vulnerability/2c63f136-4c1f-4093-9a8c-5e51f19eae28
+ |      - https://wordpress.org/news/2024/06/wordpress-6-5-5/
+ |
+ | [!] Title: WordPress < 6.5.5 - Contributor+ Stored XSS in Template-Part Block
+ |     Fixed in: 5.4.16
+ |     References:
+ |      - https://wpscan.com/vulnerability/7c448f6d-4531-4757-bff0-be9e3220bbbb
+ |      - https://wordpress.org/news/2024/06/wordpress-6-5-5/
+ |
+ | [!] Title: WordPress < 6.5.5 - Contributor+ Path Traversal in Template-Part Block
+ |     Fixed in: 5.4.16
+ |     References:
+ |      - https://wpscan.com/vulnerability/36232787-754a-4234-83d6-6ded5e80251c
+ |      - https://wordpress.org/news/2024/06/wordpress-6-5-5/
+
+[i] The main theme could not be detected.
+
+[+] Enumerating Vulnerable Plugins (via Passive Methods)
+[+] Checking Plugin Versions (via Passive and Aggressive Methods)
+
+[i] Plugin(s) Identified:
+
+[+] ar-contactus
+ | Location: https://aaaaaaa.com/wp-content/plugins/ar-contactus/
+ | Last Updated: 2022-12-17T07:07:28.000Z
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ |
+ | [!] 1 vulnerability identified:
+ |
+ | [!] Title: All in One Support Button < 1.8.8 - Authenticated Stored Cross-Site Scripting
+ |     Fixed in: 1.8.8
+ |     References:
+ |      - https://wpscan.com/vulnerability/a7a509b8-844a-4b8b-869f-efe97f67ffea
+ |      - https://codecanyon.net/item/contact-us-allinone-button-with-callback-request-feature-for-wordpress/22266189
+ |
+ | The version could not be determined.
+
+[+] woocommerce
+ | Location: https://aaaaaaa.com/wp-content/plugins/woocommerce/
+ | Last Updated: 2024-07-26T12:29:00.000Z
+ | [!] The version is out of date, the latest version is 9.1.4
+ |
+ | Found By: Meta Generator (Passive Detection)
+ |
+ | [!] 17 vulnerabilities identified:
+ |
+ | [!] Title: Woocommerce < 5.2.0 - Authenticated Stored Cross-Site Scripting (XSS)
+ |     Fixed in: 5.2.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/6d262555-7ae4-4e36-add6-4baa34dc3010
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-24323
+ |      - https://www.youtube.com/watch?v=YXNYkVbaAfo
+ |
+ | [!] Title: Woocommerce 3.3 to 5.5 - Authenticated Blind SQL Injection
+ |     Fixed in: 5.5.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/1212fec8-1fde-41e5-af70-abdd7ffe5379
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-32790
+ |      - https://woocommerce.com/posts/critical-vulnerability-detected-july-2021/
+ |      - https://twitter.com/WooCommerce/status/1415442447312764931
+ |      - https://www.wordfence.com/blog/2021/07/critical-sql-injection-vulnerability-patched-in-woocommerce/
+ |      - https://noc.org/2021/07/15/serious-sqli-in-woocommerce/
+ |      - https://blog.wpscan.com/critical-woocommerce-vulnerabilities/
+ |      - https://github.com/woocommerce/woocommerce/security/advisories/GHSA-7vx5-x39w-q24g
+ |
+ | [!] Title: WooCommerce < 5.7.0  & WooCommerce Admin < 2.6.4 - Analytics Report Leaks
+ |     Fixed in: 5.7.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/6f1ecd1e-5363-44df-b9c7-a67dc9398261
+ |      - https://developer.woocommerce.com/2021/09/22/important-security-patch-released-in-woocommerce/
+ |
+ | [!] Title: WooCommerce < 6.2.1 - Subscriber+ Arbitrary Comment Deletion
+ |     Fixed in: 6.2.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/b76dbf37-a0a2-48cf-bd85-3ebbc2f394dd
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-0775
+ |      - https://plugins.trac.wordpress.org/changeset/2683324
+ |      - https://developer.woocommerce.com/2022/02/22/woocommerce-6-2-1-security-fix/
+ |
+ | [!] Title: WooCommerce < 6.2.1 - Path Traversal via Importers
+ |     Fixed in: 6.2.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/26e169da-4020-4b3d-8bee-af01bd853791
+ |      - https://plugins.trac.wordpress.org/changeset/2683324
+ |      - https://developer.woocommerce.com/2022/02/22/woocommerce-6-2-1-security-fix/
+ |
+ | [!] Title: WooCommerce < 6.3.1 - Orders Marked as Paid (via PayPal Standard Gateway)
+ |     Fixed in: 6.3.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/bdda03d0-d657-4e12-8996-40152194c607
+ |      - https://developer.woocommerce.com/2022/03/10/woocommerce-3-5-10-6-3-1-security-releases/
+ |
+ | [!] Title: WooCommerce < 6.6.0 - Admin+ Stored HTML Injection
+ |     Fixed in: 6.6.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/0316e5f3-3302-40e3-8ff4-be3423a3be7b
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2099
+ |
+ | [!] Title: WooCommerce < 7.9 - Unauthenticated Sensitive Information Disclosure
+ |     Fixed in: 7.9
+ |     References:
+ |      - https://wpscan.com/vulnerability/d1cec296-b5df-4cea-8c0d-d03a975cb6af
+ |      - https://hackerone.com/reports/2057736
+ |
+ | [!] Title: WooCommerce < 8.1.1 - Shop Manager+ User Metadata Disclosure
+ |     Fixed in: 8.1.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/bb9f355a-be33-41b1-af36-0a30c24bec8c
+ |      - https://hackerone.com/reports/1702658
+ |      - https://developer.woocommerce.com/2023/09/16/woocommerce-vulnerability-reintroduced-from-7-0-1/
+ |
+ | [!] Title: WooCommerce < 7.9.0 - Sensitive Information Exposure
+ |     Fixed in: 7.9.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/9c9498b0-d42e-4ce0-b299-ba5d08058a75
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/7b2d1879-c337-41c9-9f47-f9c2fe8e5928
+ |
+ | [!] Title: WooCommerce <= 8.1.1 & WooCommerce Blocks <= 11.1.1 - Authenticated (Contributor+) Stored Cross-Site Scripting via Featured Image alt Attribute
+ |     Fixed in: 8.2.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/b8e9b8cf-8d13-4fd8-8e1e-ee35a01baf05
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-47777
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/525dec5b-b457-483c-ab2d-09dd320edcaa
+ |
+ | [!] Title: WooCommerce < 7.0.1 - Authenticated(Shop Manager+) Sensitive Information Exposure
+ |     Fixed in: 7.0.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/45f56af8-b238-41a5-b7d5-bd40982d5ed7
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/f1efcff5-3af6-4c44-9654-b917523419aa
+ |
+ | [!] Title: WooCommerce < 8.3.0 - Cross-Site Request Forgery
+ |     Fixed in: 8.3.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/d11e7996-3417-4b1b-a090-2f4d31cdd11d
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-52222
+ |      - https://patchstack.com/database/vulnerability/woocommerce/wordpress-woocommerce-plugin-8-2-2-cross-site-request-forgery-csrf-vulnerability
+ |
+ | [!] Title: WooCommerce < 8.4.0 - Reflected Cross-Site Scripting
+ |     Fixed in: 8.4.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/0b51f01a-24d9-4101-bdcf-728b21efc5ed
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/43810a17-89b4-44f5-887e-1ad0989ea5b4
+ |
+ | [!] Title: WooCommerce < 8.6 - Contributor+ Private/Draft Products Access
+ |     Fixed in: 8.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/a7735feb-876e-461c-9a56-ea6067faf277
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-1310
+ |
+ | [!] Title: WooCommerce < 8.6.0 - Cross-Site Request Forgery
+ |     Fixed in: 8.6.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/14d03287-6571-46d3-89af-0ad64dad6d33
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-22155
+ |      - https://patchstack.com/database/vulnerability/woocommerce/wordpress-woocommerce-plugin-8-5-2-cross-site-request-forgery-csrf-vulnerability
+ |
+ | [!] Title: WooCommerce < 9.0.0 - Shop Manager+ Content Injection
+ |     Fixed in: 9.0.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/44887eb0-ee24-4368-ba5e-6ed189ba8e5d
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-35777
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/ee8436c2-3dda-481c-92b3-cc2ba8fc1993
+ |
+ | Version: 4.8.0 (60% confidence)
+ | Found By: Meta Generator (Passive Detection)
+ |  - https://aaaaaaa.com/, Match: 'WooCommerce 4.8.0'
+
+[+] WPScan DB API OK
+ | Plan: free
+ | Requests Done (during the scan): 4
+ | Requests Remaining: 18
+
+[+] Finished: Wed Aug  7 05:21:57 2024
+[+] Requests Done: 57
+[+] Cached Requests: 5
+[+] Data Sent: 12.973 KB
+[+] Data Received: 2.458 MB
+[+] Memory used: 226.418 MB
+[+] Elapsed time: 00:01:14
