@@ -30,17 +30,45 @@ def read_rar(rar_path):
                         print(item.filename)
                         with rf.open(item.filename) as file:
                             content = file.read().decode('utf-8')
-                            pattern = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
-                            matches = pattern.findall(content)
-                            for match in matches:
+                            pattern1 = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            pattern2 = re.compile(r'url: .+?\nlogin: .+?\npassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            pattern3 = re.compile(r'URL: .+?\nUSER: .+?\nPASS: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            matches1 = pattern1.findall(content)
+                            matches2 = pattern2.findall(content)
+                            matches3 = pattern3.findall(content)
+                            print("matches3")
+                            # Chuyển đổi các chuỗi từ pattern 2 và pattern 3 về format chuẩn như pattern 1
+                            matches2 = [match.replace('url:', 'URL:').replace('login:', 'Username:').replace('password:', 'Password:') for match in matches2]
+                            matches3 = [match.replace('USER:', 'Username:').replace('PASS:', 'Password:') for match in matches3]
+                            for match in matches1:
+                                lines = match.strip().split('\n')
+                                results.extend(lines)
+                            for match in matches2:
+                                lines = match.strip().split('\n')
+                                results.extend(lines)
+                            for match in matches3:
                                 lines = match.strip().split('\n')
                                 results.extend(lines)
                     elif str(item.filename).startswith("VN"):
                         with rf.open(item.filename) as file:
                             content = file.read().decode('utf-8')
-                            pattern = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
-                            matches = pattern.findall(content)
-                            for match in matches:
+                            pattern1 = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            pattern2 = re.compile(r'url: .+?\nlogin: .+?\npassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            pattern3 = re.compile(r'URL: .+?\nUSER: .+?\nPASS: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            matches1 = pattern1.findall(content)
+                            matches2 = pattern2.findall(content)
+                            matches3 = pattern3.findall(content)
+                            print("matches3")
+                            # Chuyển đổi các chuỗi từ pattern 2 và pattern 3 về format chuẩn như pattern 1
+                            matches2 = [match.replace('url:', 'URL:').replace('login:', 'Username:').replace('password:', 'Password:') for match in matches2]
+                            matches3 = [match.replace('USER:', 'Username:').replace('PASS:', 'Password:') for match in matches3]
+                            for match in matches1:
+                                lines = match.strip().split('\n')
+                                results.extend(lines)
+                            for match in matches2:
+                                lines = match.strip().split('\n')
+                                results.extend(lines)
+                            for match in matches3:
                                 lines = match.strip().split('\n')
                                 results.extend(lines)
     cleaned_results = [item.rstrip('\r') for item in results]
@@ -57,24 +85,51 @@ def read_rar_have_password(rar_path, password):
                         print(item.filename)
                         with rf.open(item.filename) as file:
                             content = file.read().decode('utf-8')
-                            pattern = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
-                            matches = pattern.findall(content)
-                            for match in matches:
+                            pattern1 = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            pattern2 = re.compile(r'url: .+?\nlogin: .+?\npassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            pattern3 = re.compile(r'URL: .+?\nUSER: .+?\nPASS: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            matches1 = pattern1.findall(content)
+                            matches2 = pattern2.findall(content)
+                            matches3 = pattern3.findall(content)
+                            # Chuyển đổi các chuỗi từ pattern 2 và pattern 3 về format chuẩn như pattern 1
+                            matches2 = [match.replace('url:', 'URL:').replace('login:', 'Username:').replace('password:', 'Password:') for match in matches2]
+                            matches3 = [match.replace('USER:', 'Username:').replace('PASS:', 'Password:') for match in matches3]
+                            for match in matches1:
+                                lines = match.strip().split('\n')
+                                results.extend(lines)
+                            for match in matches2:
+                                lines = match.strip().split('\n')
+                                results.extend(lines)
+                            for match in matches3:
                                 lines = match.strip().split('\n')
                                 results.extend(lines)
                     elif str(item.filename).startswith("VN"):
                         with rf.open(item.filename) as file:
                             content = file.read( ).decode('utf-8')
-                            pattern = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
-                            matches = pattern.findall(content)
-                            for match in matches:
+                            pattern1 = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            pattern2 = re.compile(r'url: .+?\nlogin: .+?\npassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            pattern3 = re.compile(r'URL: .+?\nUSER: .+?\nPASS: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            matches1 = pattern1.findall(content)
+                            matches2 = pattern2.findall(content)
+                            matches3 = pattern3.findall(content)
+                            # Chuyển đổi các chuỗi từ pattern 2 và pattern 3 về format chuẩn như pattern 1
+                            matches2 = [match.replace('url:', 'URL:').replace('login:', 'Username:').replace('password:', 'Password:') for match in matches2]
+                            matches3 = [match.replace('USER:', 'Username:').replace('PASS:', 'Password:') for match in matches3]
+                            
+                            for match in matches1:
+                                lines = match.strip().split('\n')
+                                results.extend(lines)
+                            for match in matches2:
+                                lines = match.strip().split('\n')
+                                results.extend(lines)
+                            for match in matches3:
                                 lines = match.strip().split('\n')
                                 results.extend(lines)
                             #results.extend(matches)
                             #results = '\n'.join(match.strip() for match in matches)        
     cleaned_results = [item.rstrip('\r') for item in results]
     return cleaned_results
-
+ 
 def read_zip(rar_path):
     results = []
     with zipfile.ZipFile(rar_path) as rf:
