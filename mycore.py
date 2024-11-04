@@ -36,7 +36,6 @@ def read_rar(rar_path):
                             matches1 = pattern1.findall(content)
                             matches2 = pattern2.findall(content)
                             matches3 = pattern3.findall(content)
-                            print("matches3")
                             # Chuyển đổi các chuỗi từ pattern 2 và pattern 3 về format chuẩn như pattern 1
                             matches2 = [match.replace('url:', 'URL:').replace('login:', 'Username:').replace('password:', 'Password:') for match in matches2]
                             matches3 = [match.replace('USER:', 'Username:').replace('PASS:', 'Password:') for match in matches3]
@@ -85,9 +84,9 @@ def read_rar_have_password(rar_path, password):
                         print(item.filename)
                         with rf.open(item.filename) as file:
                             content = file.read().decode('utf-8')
-                            pattern1 = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
-                            pattern2 = re.compile(r'url: .+?\nlogin: .+?\npassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
-                            pattern3 = re.compile(r'URL: .+?\nUSER: .+?\nPASS: .+?(?=\n|$)', re.MULTILINE | re.DOTALL)
+                            pattern1 = re.compile(r'URL: .+?\nUsername: .+?\nPassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL | re.IGNORECASE)
+                            pattern2 = re.compile(r'url: .+?\nlogin: .+?\npassword: .+?(?=\n|$)', re.MULTILINE | re.DOTALL | re.IGNORECASE)
+                            pattern3 = re.compile(r'URL: .+?\nUSER: .+?\nPASS: .+?(?=\n|$)', re.MULTILINE | re.DOTALL | re.IGNORECASE)
                             matches1 = pattern1.findall(content)
                             matches2 = pattern2.findall(content)
                             matches3 = pattern3.findall(content)
@@ -366,7 +365,7 @@ def create_file_selector_window():
 
 def vjp_df(df_a):
     if len(df_a) > 1:
-        keywords = ['netflix', 'aws', 'paypal', 'azure', 'digitalocean.com', 'oracle','matbao', 'glint', 'work', 'lancer', 'inance']
+        keywords = ['canva','netflix', 'aws', 'paypal', 'azure', 'digitalocean.com', 'oracle','matbao', 'glint', 'work', 'lancer', 'inance', 'azdigi', 'hosting', 'amazon']
         regex_pattern = '|'.join(keywords)
         df_a = pd.DataFrame(df_a)
         df_vjp = df_a[df_a['URL'].str.contains(regex_pattern, case=False)]
