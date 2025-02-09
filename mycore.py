@@ -12,14 +12,13 @@ from openpyxl import Workbook
 import os
 
 
-
 current_date = datetime.now().date()
 excel_path = 'database/' + str(current_date) + '.xlsx'
 excel_path_2 = 'database/' + str(current_date) + '-vjp.xlsx'
 excel_path_3 = 'database/' + str(current_date) + '-sdt.xlsx'
 rar_path = ''
 password_list = []
-
+people_name_list = ['linh', 'minhanh', 'ngoc','huyen', 'huong', 'nhi', 'thao', 'khanhly', 'anhthu', 'thuha', 'tram', 'baoanh', 'vananh', 'chau', "vy"]
 
 def read_rar(rar_path):
     results = []
@@ -513,6 +512,7 @@ def test():
     
 
 create_file_selector_window_2() 
+filter_and_save_excel(excel_path, excel_path_3, people_name_list)
 #test()
 
 
