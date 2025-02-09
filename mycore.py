@@ -16,6 +16,7 @@ import os
 current_date = datetime.now().date()
 excel_path = 'database/' + str(current_date) + '.xlsx'
 excel_path_2 = 'database/' + str(current_date) + '-vjp.xlsx'
+excel_path_3 = 'database/' + str(current_date) + '-sdt.xlsx'
 rar_path = ''
 password_list = []
 
@@ -365,7 +366,7 @@ def create_file_selector_window():
 
 def vjp_df(df_a):
     if len(df_a) > 1:
-        keywords = ['canva','netflix', 'aws', 'paypal', 'azure', 'digitalocean.com', 'oracle','matbao', 'glint', 'work', 'lancer', 'inance', 'azdigi', 'hosting', 'amazon']
+        keywords = ['canva','netflix', 'aws', 'paypal', 'azure', 'digitalocean.com', 'oracle','matbao', 'glint', 'work', 'lancer', 'inance', 'azdigi', 'hosting', 'amazon', '.gov.vn']
         regex_pattern = '|'.join(keywords)
         df_a = pd.DataFrame(df_a)
         df_vjp = df_a[df_a['URL'].str.contains(regex_pattern, case=False)]
@@ -433,14 +434,64 @@ def check_password_list_without_extract(rar_path, password_list):
                 first_file_info = rf.infolist()[0]
                 with rf.open(first_file_info) as f:
                     f.read(1)  
-                return 1, password  
-        except rarfile.BadPassword:
-            print(f"Mật khẩu '{password}' sai")
+                return 1, password
         except rarfile.Error as e:
             print(f"Lỗi khác: {e}")
             return 0, ''
     return 0, ''  
 
+
+def filter_and_save_excel(file_path, file_path_2, keywords):
+    try:
+        df = pd.read_excel(file_path)
+
+        if not all(col in df.columns for col in ['URL', 'Username', 'Password']):
+            print("File không chứa đầy đủ các cột URL, Username, Password.")
+            return
+
+        def contains_keyword(value):
+            if pd.isna(value):
+                return False, None
+            for keyword in keywords:
+                if keyword in str(value):
+                    return True, keyword
+            return False, None
+
+        def has_consecutive_digits(value):
+            if pd.isna(value):
+                return False
+            return bool(re.search(r'\d{9,10}', str(value)))
+
+        matched_rows = []
+
+        for index, row in df.iterrows():
+            username_contains, username_keyword = contains_keyword(row['Username'])
+            password_contains, password_keyword = contains_keyword(row['Password'])
+
+            username_has_digits = has_consecutive_digits(row['Username'])
+            password_has_digits = has_consecutive_digits(row['Password'])
+
+            if (username_contains and password_has_digits) or (password_contains and username_has_digits):
+                matched_rows.append({
+                    'URL': row['URL'],
+                    'Username': row['Username'],
+                    'Password': row['Password'],
+                    'Matched Keyword': username_keyword if username_contains else password_keyword
+                })
+
+        filtered_df = pd.DataFrame(matched_rows)
+
+        if not filtered_df.empty:
+            print("Các dòng khớp với yêu cầu:")
+            print(filtered_df[['URL', 'Username', 'Password', 'Matched Keyword']])
+
+            filtered_df.to_excel(file_path_2, index=False)
+            print(f"Dữ liệu đã được ghi vào file: {file_path_2}")
+        else:
+            print("Không có dòng nào khớp với yêu cầu.")
+
+    except Exception as e:
+        print(f"Có lỗi xảy ra: {e}")
 
 def create_file_selector_window_2():
     root = tk.Tk()

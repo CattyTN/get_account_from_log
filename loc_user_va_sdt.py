@@ -64,8 +64,14 @@ def create_output():
         wb.save(file_path_2)
         return
 
-file_path = 'C:\\Users\\PC\\Documents\\broject\\database\\2024-11-11.xlsx' 
-file_path_2 = 'C:\\Users\\PC\\Documents\\broject\\database\\2024-11-11_2.xlsx'
-keywords = ['linh', 'minhanh', 'ngoc','huyen', 'huong', 'nhi', 'thao', 'khanhly', 'anhthu', 'thuha', 'tram', 'baoanh', 'vananh', 'chau']
+a= 'C:\\Users\\PC\\Documents\\broject\\database\\2025-02-06'
+file_path = a + '.xlsx' 
+file_path_2 = a + '-2.xlsx'
+
+
+
+
+
+keywords = ['linh', 'minhanh', 'ngoc','huyen', 'huong', 'nhi', 'thao', 'khanhly', 'anhthu', 'thuha', 'tram', 'baoanh', 'vananh', 'chau', "vy"]
 create_output()
 filter_and_save_excel(file_path, file_path_2, keywords)
