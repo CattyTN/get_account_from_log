@@ -375,7 +375,7 @@ def vjp_df(df_a):
 def core_process():
     check, password = check_password_list_without_extract(rar_path, password_list)
     print("File: " + rar_path)
-    print("Password đúng: " + str(password))
+    print("Correct password: " + str(password))
     if rar_have_password(rar_path):
         if str(password) == "":
             messagebox.showwarning("Alert", "enter password")
@@ -427,6 +427,7 @@ def check_password_list(rar_path, password_list):
 
 def check_password_list_without_extract(rar_path, password_list):
     for password in password_list:
+        print("Try pass: ",password)
         try:
             with rarfile.RarFile(rar_path, 'r') as rf:
                 rf.setpassword(password)
@@ -435,8 +436,8 @@ def check_password_list_without_extract(rar_path, password_list):
                     f.read(1)  
                 return 1, password
         except rarfile.Error as e:
-            print(f"Lỗi khác: {e}")
-            return 0, ''
+            print(f"Lỗi {e}")
+            #return 0, ''
     return 0, ''  
 
 
@@ -488,7 +489,6 @@ def filter_and_save_excel(file_path, file_path_2, keywords):
             print(f"Dữ liệu đã được ghi vào file: {file_path_2}")
         else:
             print("Không có dòng nào khớp với yêu cầu.")
-
     except Exception as e:
         print(f"Có lỗi xảy ra: {e}")
 
@@ -499,8 +499,13 @@ def create_file_selector_window_2():
     button_select_file.grid(column=0, row=0, padx=10, pady=10)
     button_start = tk.Button(root, text="Start", command=lambda: start_button(text))
     button_start.grid(column=0, row=1, padx=10, pady=10)
+
+
+    button_sdt = tk.Button(root, text="Filter", command=lambda: filter_and_save_excel(excel_path, excel_path_3, people_name_list))
+    button_sdt.grid(column=0, row=2, padx=10, pady=10)
+
     text = tk.Text(root, width=20, height=10, font=('Arial', 14))
-    text.grid(column=0, row=2, padx=10, pady=10)
+    text.grid(column=0, row=3, padx=10, pady=10)
     root.mainloop()
 
 def test():
@@ -509,13 +514,14 @@ def test():
     df = convert_from_txt_to_dataframe(result)
     filtered_df = unique_domain(df)
     vjp_df(filtered_df)
-    
+
 
 create_file_selector_window_2() 
-filter_and_save_excel(excel_path, excel_path_3, people_name_list)
+
 #test()
 
-
+# fix no pass
+# auto read list
 
 
 
